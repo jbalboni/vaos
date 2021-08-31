@@ -19,7 +19,7 @@
     labels: data.map((c) => c.x),
     datasets: [
       {
-        label: 'PR completion time in days',
+        label: 'Lead time in days',
         data: data.map((c) => c.y),
         fill: false,
         borderColor: 'rgb(75, 192, 192)'
