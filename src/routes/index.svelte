@@ -5,7 +5,7 @@
 
   async function getMetrics() {
     const response = await fetch(
-      `http://localhost:3000/api/changeMetrics?path=vaos&label=vaos`
+      `${process.env.VERCEL_URL}/api/changeMetrics?path=vaos&label=vaos`
     );
     return response.json();
   }
