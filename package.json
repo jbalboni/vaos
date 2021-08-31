@@ -2,18 +2,26 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "svelte-kit dev --port 3003",
+    "backend": "PORT=3003 vercel dev",
     "build": "svelte-kit build --verbose",
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
+    "prettier": "^2.3.2",
+    "prettier-plugin-svelte": "^2.4.0",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
-    "svelte": "^3.38.3"
+    "svelte": "^3.38.3",
+    "vercel": "^23.1.2"
   },
   "dependencies": {
-    "prettier": "^2.3.2",
-    "prettier-plugin-svelte": "^2.3.1"
+    "@octokit/core": "^3.5.1",
+    "@octokit/plugin-paginate-rest": "^2.15.1",
+    "chartjs-adapter-moment": "^1.0.0",
+    "ioredis": "^4.27.9",
+    "moment": "^2.29.1",
+    "svelte-chartjs": "^1.0.1"
   },
   "prettier": {
     "arrowParens": "always",
