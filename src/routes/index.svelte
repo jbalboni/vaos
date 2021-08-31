@@ -1,13 +1,20 @@
 <script context="module">
   export async function load({ page, fetch }) {
-    const response = await fetch(`changeMetrics.json?path=vaos&label=vaos`);
-    const metrics = await response.json();
+    try {
+      const response = await fetch(`changeMetrics.json?path=vaos&label=vaos`);
+      const metrics = await response.json();
 
-    return {
-      props: {
-        metrics
-      }
-    };
+      return {
+        props: {
+          metrics
+        }
+      };
+    } catch (e) {
+      return {
+        status: 500,
+        body: e.message
+      };
+    }
   }
 </script>
 

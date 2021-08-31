@@ -2,10 +2,11 @@ import moment from 'moment';
 import { Octokit } from '@octokit/core';
 import { paginateRest } from '@octokit/plugin-paginate-rest';
 import Redis from 'ioredis';
+import { GITHUB_TOKEN, REDIS_URL } from '$lib/Env';
 
 const MyOctokit = Octokit.plugin(paginateRest);
 const octokit = new MyOctokit({
-  auth: process.env.GITHUB_TOKEN
+  auth: GITHUB_TOKEN
 });
 
 const intervalConfig = {
@@ -40,7 +41,7 @@ function generateInterval(start, interval, defaultValue = 0) {
 }
 
 export async function get({ query }) {
-  const client = new Redis(process.env.REDIS_URL);
+  const client = new Redis(REDIS_URL);
   const start = moment().subtract(3, 'months').startOf('day').format();
   const bugLabels = ['bug', 'frontend', 'production'];
   const interval = 'week';
