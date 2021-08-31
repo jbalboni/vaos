@@ -39,15 +39,14 @@ function generateInterval(start, interval, defaultValue = 0) {
   return intervals;
 }
 
-export default async function changeMetrics(req, res) {
-  const {
-    start = moment().subtract(3, 'months').startOf('day').format(),
-    path,
-    label,
-    bugLabels = ['bug', 'frontend', 'production'],
-    interval = 'week'
-  } = req.query;
+export async function get({ query }) {
   const client = new Redis(process.env.REDIS_URL);
+  const start = moment().subtract(3, 'months').startOf('day').format();
+  const bugLabels = ['bug', 'frontend', 'production'];
+  const interval = 'week';
+
+  const path = query.get('path');
+  const label = query.get('label');
 
   const leadTime = [];
   const changes = [];
@@ -134,20 +133,22 @@ export default async function changeMetrics(req, res) {
       return cur;
     }, generateInterval(start, interval, { sum: 0, count: 0 }));
 
-  res.json({
-    changes: Object.entries(changeMap).map(([key, val]) => ({
-      x: key,
-      y: val
-    })),
-    leadTime: Object.entries(leadTimeMap).map(([key, val]) => ({
-      x: key,
-      y: !val.count ? 0 : (val.sum / val.count / 24.0).toFixed(2)
-    })),
-    bugs: Object.entries(bugMap).map(([key, val]) => ({
-      x: key,
-      y: val
-    }))
-  });
+  return {
+    body: {
+      changes: Object.entries(changeMap).map(([key, val]) => ({
+        x: key,
+        y: val
+      })),
+      leadTime: Object.entries(leadTimeMap).map(([key, val]) => ({
+        x: key,
+        y: !val.count ? 0 : (val.sum / val.count / 24.0).toFixed(2)
+      })),
+      bugs: Object.entries(bugMap).map(([key, val]) => ({
+        x: key,
+        y: val
+      }))
+    }
+  };
 }
 
 // console.log(
