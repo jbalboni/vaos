@@ -8,18 +8,32 @@ const octokit = new MyOctokit({
 });
 
 export async function get() {
-  const response = await octokit.request(`/repos/{org}/{repo}/pulls`, {
+  const frontend = octokit.request(`/repos/{org}/{repo}/pulls`, {
     repo: 'vets-website',
     org: 'department-of-veterans-affairs',
     state: 'open',
     per_page: 100
   });
 
-  const relevantPRs = response.data.filter(
-    (pr) =>
-      !pr.draft &&
-      pr.requested_teams.some((team) => team.name === 'vfs-vaos-fe')
-  );
+  const backend = octokit.request(`/repos/{org}/{repo}/pulls`, {
+    repo: 'vets-api',
+    org: 'department-of-veterans-affairs',
+    state: 'open',
+    per_page: 100
+  });
+
+  const [frontResponse, backResponse] = await Promise.all([frontend, backend]);
+
+  const relevantPRs = frontResponse.data
+    .concat(backResponse.data)
+    .filter(
+      (pr) =>
+        !pr.draft &&
+        !pr.title.includes('WIP') &&
+        pr.requested_teams.some(
+          (team) => team.name === 'vfs-vaos-fe' || team.name === 'vfs-vaos'
+        )
+    );
   return {
     body: relevantPRs.map((pr) => ({
       title: pr.title,
