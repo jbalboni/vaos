@@ -28,6 +28,10 @@
     <h1>VAOS front end specifications</h1>
 
     Choose application area
+
+    <p>
+      <a href="/">Home</a>
+    </p>
   </div>
 </div>
 

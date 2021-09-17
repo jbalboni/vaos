@@ -52,6 +52,7 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
   .metric-chart {
     flex: 1;
