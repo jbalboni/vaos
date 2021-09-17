@@ -1,15 +1,14 @@
 <script>
+  import { metrics } from '$lib/stores';
   import DeployedChanges from './_DeployedChanges.svelte';
   import LeadTime from './_LeadTime.svelte';
   import FailureRate from './_FailureRate.svelte';
   import PullRequests from './_PullRequests.svelte';
   import { onMount } from 'svelte';
 
-  let metrics = null;
-
   onMount(async () => {
     const response = await fetch(`changeMetrics.json?path=vaos&label=vaos`);
-    metrics = await response.json();
+    metrics.set(await response.json());
   });
 </script>
 
@@ -24,15 +23,15 @@
 </div>
 <h2>Metrics</h2>
 <div class="row">
-  {#if metrics}
+  {#if $metrics}
     <div class="metric-chart">
-      <DeployedChanges data={metrics.changes} />
+      <DeployedChanges data={$metrics.changes} />
     </div>
     <div class="metric-chart">
-      <LeadTime data={metrics.leadTime} />
+      <LeadTime data={$metrics.leadTime} />
     </div>
     <div class="metric-chart">
-      <FailureRate data={metrics} />
+      <FailureRate data={$metrics} />
     </div>
   {:else}
     Loading metrics...
