@@ -1,14 +1,12 @@
 <script>
   import { onMount } from 'svelte';
   import { pullRequests } from '$lib/stores';
+  export let pullRequestData;
 
-  let loading = true;
+  $: currentPulls = $pullRequests || pullRequestData;
+  let loading = false;
   let lastFetch = Date.now();
-  onMount(async () => {
-    const response = await fetch('pullRequests.json');
-    pullRequests.set(await response.json());
-    loading = false;
-
+  onMount(() => {
     window.addEventListener('focus', async () => {
       if (Date.now() - lastFetch > 15000) {
         loading = true;
@@ -25,9 +23,9 @@
 {#if loading}
   <span>refreshing...</span>
 {/if}
-{#if $pullRequests}
+{#if currentPulls}
   <ul>
-    {#each $pullRequests as pr}
+    {#each currentPulls as pr}
       <li>
         <a target="_blank" rel="nofollow noreferrer" href={pr.url}>{pr.title}</a
         >

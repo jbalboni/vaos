@@ -15,18 +15,15 @@
     services: 'Service layer'
   };
 
-  const availableSpecs = $specs || specData;
-  if (availableSpecs) {
-    availableSpecs.nodes.forEach((feature) => {
-      const [moduleName, ...path] = feature.filePath
-        .replace('./src/applications/vaos/tests/', '')
-        .split('/');
+  specData.nodes.forEach((feature) => {
+    const [moduleName, ...path] = feature.filePath
+      .replace('./src/applications/vaos/tests/', '')
+      .split('/');
 
-      if (featureByModule[moduleName]) {
-        featureByModule[moduleName].push(feature);
-      }
-    });
-  }
+    if (featureByModule[moduleName]) {
+      featureByModule[moduleName].push(feature);
+    }
+  });
 </script>
 
 <div class="app-module-column">

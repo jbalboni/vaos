@@ -1,3 +1,29 @@
+<script context="module">
+  import { get } from 'svelte/store';
+  import { pullRequests } from '$lib/stores';
+
+  export async function load({ page, fetch }) {
+    try {
+      let pullRequestData = get(pullRequests);
+      if (!pullRequestData) {
+        const response = await fetch(`/pullRequests.json`);
+        pullRequestData = await response.json();
+      }
+
+      return {
+        props: {
+          pullRequestData
+        }
+      };
+    } catch (e) {
+      return {
+        status: 500,
+        body: e.message
+      };
+    }
+  }
+</script>
+
 <script>
   import { metrics } from '$lib/stores';
   import DeployedChanges from './_DeployedChanges.svelte';
@@ -6,15 +32,18 @@
   import PullRequests from './_PullRequests.svelte';
   import { onMount } from 'svelte';
 
+  export let pullRequestData;
+
   onMount(async () => {
     const response = await fetch(`changeMetrics.json?path=vaos&label=vaos`);
     metrics.set(await response.json());
+    pullRequests.set(pullRequestData);
   });
 </script>
 
 <div class="row">
   <div class="metric-chart">
-    <PullRequests />
+    <PullRequests {pullRequestData} />
   </div>
   <div class="metric-chart">
     <h2>Specs</h2>
