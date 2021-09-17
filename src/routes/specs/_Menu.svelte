@@ -1,5 +1,4 @@
 <script>
-  import { specs } from './specStore';
   export let specData;
 
   const featureByModule = {
