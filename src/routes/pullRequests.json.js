@@ -22,7 +22,18 @@ export async function get() {
     per_page: 100
   });
 
-  const [frontResponse, backResponse] = await Promise.all([frontend, backend]);
+  const members = octokit.request(`/orgs/{org}/teams/{team}/members`, {
+    team: 'vfs-vaos',
+    org: 'department-of-veterans-affairs'
+  });
+
+  const [frontResponse, backResponse, membersResponse] = await Promise.all([
+    frontend,
+    backend,
+    members
+  ]);
+
+  const membersList = membersResponse.data.map((m) => m.login);
 
   const relevantPRs = frontResponse.data
     .concat(backResponse.data)
@@ -30,9 +41,10 @@ export async function get() {
       (pr) =>
         !pr.draft &&
         !pr.title.includes('WIP') &&
-        pr.requested_teams.some(
+        (pr.requested_teams.some(
           (team) => team.name === 'vfs-vaos-fe' || team.name === 'vfs-vaos'
-        )
+        ) ||
+          membersList.includes(pr.user.login))
     );
   return {
     body: relevantPRs.map((pr) => ({

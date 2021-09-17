@@ -1,0 +1,868 @@
+{
+  "root": true,
+  "nodes": [
+    {
+      "type": "Feature",
+      "name": "VAOS <ConfirmedAppointmentDetailsPage>",
+      "filePath": "./src/applications/vaos/tests/appointment-list/components/ConfirmedAppointmentDetailsPage/index.video.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Background",
+          "name": "video appointments",
+          "filePath": "./src/applications/vaos/tests/appointment-list/components/ConfirmedAppointmentDetailsPage/index.video.unit.spec.jsx",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should show info and disabled link if ad hoc and more than 30 minutes in the future",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show active link if 30 minutes in the future",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show active link less than 30 minutes in the future",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show active link if less than 4 hours in the past",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show message about when to join if mobile gfe",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should direct user to VA facility if we are missing facility details",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should direct user to valid facility for changes if using the 612 site",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show address info for clinic based appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should show address info for store forward appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should fire a print request when print button clicked",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "ATLAS appointment should display title",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should verify Video Connect at home calendar ics file format",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should verify Video Connect at VA location calendar ics file format",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should verify Video Connect at ATLAS calendar ics file format",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should verify Video Connect on VA device calendar ics file format",
+              "parts": []
+            }
+          ]
+        },
+        {
+          "type": "Background",
+          "name": "video appointments fetched from VAOS service",
+          "filePath": "./src/applications/vaos/tests/appointment-list/components/ConfirmedAppointmentDetailsPage/index.video.unit.spec.jsx",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "video appointment detail with practitioners",
+              "parts": [
+                "Given VAOS service community care appointments are enabled",
+                "And the user has a future video appointment with practitioners",
+                "And the appointment has associated facility information",
+                "When the page is displayed",
+                "Then the main header has focus",
+                "And the appointment time is displayed in the facility timezone",
+                "And the facility information is shown",
+                "And practitioners are displayed",
+                "And the calendar link is shown with the appropriate name",
+                "And the appointment is not marked as being in the past"
+              ],
+              "isGWT": true
+            }
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Background",
+          "name": "VAOS video appointments (css transition check)",
+          "filePath": "./src/applications/vaos/tests/appointment-list/components/ConfirmedAppointmentDetailsPage/index.video.unit.spec.jsx",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should reveal video visit instructions",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should reveal medication review instructions",
+              "parts": []
+            }
+          ]
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <RequestedAppointmentsList>",
+      "filePath": "./src/applications/vaos/tests/appointment-list/components/RequestedAppointmentsList.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should show va request",
+          "parts": [
+            "Given a veteran has VA appointment request",
+            "When the veteran selects the Requested dropdown selection",
+            "Then it should display the requested appointments"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should show cc request",
+          "parts": [
+            "Given a veteran has CC appointment request",
+            "When the veteran selects the Requested dropdown selection",
+            "Then it should display the requested appointment"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should show cc request and provider facility name if available",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should show error message when request fails",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should not show resolved requests",
+          "parts": []
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <RequestedAppointmentsList> with the VAOS service",
+      "filePath": "./src/applications/vaos/tests/appointment-list/components/RequestedAppointmentsList.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should show va request",
+          "parts": [
+            "Given a veteran has VA appointment request",
+            "And developer is using the v2 API",
+            "When veteran selects the Requested dropdown selection",
+            "Then it should display the requested appointments"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should show cc request",
+          "parts": [
+            "Given a veteran has CC appointment request",
+            "And developer is using the v2 API",
+            "When veteran selects the Requested dropdown selection"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should show error message when request fails",
+          "parts": []
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <ClinicChoicePage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/ClinicChoicePage.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should display multiple clinics and require one to be chosen",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should go to direct schedule flow when choosing a clinic, request flow when not",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should show message if user choose a different clinic but is not eligible for requests",
+          "parts": [
+            "Given a list of clinics",
+            "And the user is not passing the request past visits check",
+            "And the page has loaded",
+            "When the user chooses the different clinic option",
+            "Then the request past visits warning message is shown",
+            "And the user can't continue into the request flow"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should show a yes/no choice when a single clinic is available",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should show the correct clinic name when filtered to matching",
+          "parts": [
+            "Given two available clinics",
+            "And the second clinic matches a past appointment",
+            "When the page is displayed",
+            "Then the page says the last appointment was at the matching clinic",
+            "And the user is asked if they want an appt at matching clinic"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should retain form data after page changes",
+          "parts": []
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <ClosestCityStatePage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/ClosestCityStatePage.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should show supported parent sites",
+          "parts": [
+            "Given the user has two supported parent sites",
+            "When the page is displayed",
+            "Then the primary header should have focus",
+            "And the user should see radio buttons for each city and state"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should not submit without choosing a site",
+          "parts": [
+            "Given the user has two supported parent sites",
+            "And the page is displayed",
+            "When the user continues",
+            "Then there should be a validation error",
+            "And the user should stay on the page"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should continue to preferences page",
+          "parts": [
+            "Given the user has two supported parent sites",
+            "And the page is displayed",
+            "And the user selected a site",
+            "When the user continues",
+            "Then preferences page should open"
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <CommunityCareProviderSelectionPage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/CommunityCareProviderSelectionPage/index.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should display closest city question when user has multiple supported sites",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display list of providers when choose a provider clicked",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display choose provider when remove provider clicked",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display an error when choose a provider clicked and provider fetch error",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display an alert when no providers are available",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should notify user that the browser is blocked from using current location information",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should sort provider addresses by distance from home address in ascending order",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should sort provider addresses by distance from current location in ascending order and display distance from current location when chosen",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should reset provider selected when type of care changes",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should allow user to retry fetching location when it is blocked",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should not display closest city question when using iterations toggle",
+          "parts": [
+            "Given a user with two supported sites",
+            "And the CC iterations toggle is on",
+            "When the page is displayed",
+            "Then the closest city/state question is not shown"
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS ProviderSortVariant on <CommunityCareProviderSelectionPage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/CommunityCareProviderSelectionPage/ProviderSortVariant.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should display list of providers when choose a provider clicked",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "When the user clicks the choose a provider button",
+            "Then providers should be displayed"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should notify user that the browser is blocked from using current location information",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "And the user denies geolocation",
+            "When the user selects to sort providers by distance from current location",
+            "Then an error location alert should be displayed"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should sort provider addresses by distance from current location in ascending order when current location is selected",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "When the user selects to sort providers by distance from current location",
+            "Then providers should be displayed in ascending order by distance from current location"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should allow user to retry fetching location when it is blocked",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "And the user denies geolocation",
+            "And the error location alert is displayed",
+            "When the user attempts to search by current location again",
+            "Then providers should be displayed by distance from current location"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should sort providers by distance from selected facility in ascending order",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "When the user selects to sort providers by distance from a specific facility",
+            "Then providers should be displayed in ascending order by distance from the chosen facility"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should default to first ccEnabledSystem if user is missing a residential address",
+          "parts": [
+            "Given the CC iteration flag is on",
+            "And the user does not have a residential address",
+            "When the user tries to choose a provider",
+            "Then the select options should default to sort by distance from the first CC enabled facility"
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <DateTimeRequestPage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/DateTimeRequestPage/index.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should allow user to request date and time for a community care appointment",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should allow the user to view different calendar months",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display an alert when user selects more than 3 dates",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display an alert when user selects 2 dates and multiple times",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display an alert when user submits the form with no dates selected",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should not allow selections after max date",
+          "parts": []
+        },
+        {
+          "type": "Background",
+          "name": "community care iterations flag is turned on",
+          "filePath": "./src/applications/vaos/tests/new-appointment/components/DateTimeRequestPage/index.unit.spec.jsx",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should continue to closest city page",
+              "parts": [
+                "Given the user has two or more supported parent sites",
+                "And the user is in the community care flow",
+                "And the page has loaded",
+                "And the user has chosen a time slot",
+                "When the user continues",
+                "Then they're sent to the closest city selection page"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should skip closest city page for single site",
+              "parts": [
+                "Given the user has one supported parent site",
+                "And the user is in the community care flow",
+                "And the page has loaded",
+                "And the user has chosen a time slot",
+                "When the user continues",
+                "Then they're sent to the preferences page"
+              ],
+              "isGWT": true
+            }
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS <DateTimeSelectPage>",
+      "filePath": "./src/applications/vaos/tests/new-appointment/components/DateTimeSelectPage/index.unit.spec.jsx",
+      "nodes": [
+        {
+          "type": "Scenario",
+          "name": "should not submit form with validation error",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display loading message when in loading state",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should display error message if slots call fails",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should allow a user to choose available slot and fetch new slots after changing clinics",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should adjust look and feel by screen size",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should show validation error if no date selected",
+          "parts": []
+        },
+        {
+          "type": "Scenario",
+          "name": "should show urgent care alert if preferred date is today",
+          "parts": [
+            "Given the user has selected a clinic",
+            "And the user has chosen today as their preferred date",
+            "And there are slots available today and tomorrow",
+            "When the page is displayed",
+            "Then the urgent care alert is displayed",
+            "And the time shown as earliest available is tomorrow's slot"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should start calendar on preferred date month",
+          "parts": [
+            "Given a user eligible for direct scheduling",
+            "And a preferred date and available slot several months in the future",
+            "When the page is displayed",
+            "Then the calendar is on the month of the preferred date",
+            "And the user is able to continue to the next month"
+          ],
+          "isGWT": true
+        },
+        {
+          "type": "Scenario",
+          "name": "should fetch slots when moving between months",
+          "parts": []
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS Appointment service",
+      "filePath": "./src/applications/vaos/tests/services/appointment/index.v2.unit.spec.js",
+      "nodes": [
+        {
+          "type": "Background",
+          "name": "fetchBookedAppointment",
+          "filePath": "./src/applications/vaos/tests/services/appointment/index.v2.unit.spec.js",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for an in person VA appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a cancelled VA appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a past VA appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a VA phone appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a VA covid vaccine appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a VVC at home video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for an ATLAS video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a clinic based video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a store forward video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a mobile any video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a mobile gfe video appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a community care appointment",
+              "parts": []
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for an error fetching appointments",
+              "parts": []
+            }
+          ]
+        },
+        {
+          "type": "Background",
+          "name": "getAppointmentRequests",
+          "filePath": "./src/applications/vaos/tests/services/appointment/index.v2.unit.spec.js",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a VA appointment request",
+              "parts": [
+                "Given VA appointment request",
+                "And the developer fetched that request through both the v2 and v0 APIs",
+                "When they compare the two results",
+                "Then the results have the following differences"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a CC appointment request",
+              "parts": [
+                "Given CC appointment request",
+                "And the developer fetched that request through both the v2 and v0 APIs",
+                "When they compare the two results",
+                "Then the results have the following differences"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for a cancelled appointment request",
+              "parts": [
+                "Given cancelled VA appointment request",
+                "And the developer fetched that request through both the v2 and v0 APIs",
+                "When they compare the two results",
+                "Then the results have the following differences"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for an error fetching requests",
+              "parts": [
+                "Given VAOS error",
+                "And the developer fetched that request through both the v2 and v0 APIs",
+                "When they compare the two results",
+                "Then the results have the following differences"
+              ],
+              "isGWT": true
+            }
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS Patient service v0/v2 comparison",
+      "filePath": "./src/applications/vaos/tests/services/patient/index.v2.unit.spec.js",
+      "nodes": [
+        {
+          "type": "Background",
+          "name": "fetchFlowEligibilityAndClinics",
+          "filePath": "./src/applications/vaos/tests/services/patient/index.v2.unit.spec.js",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should match when all checks fail",
+              "parts": [
+                "Given a non MH/PC type of care",
+                "And direct and request scheduling enabled",
+                "And no passing eligibility checks",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when clinics are fetched",
+              "parts": [
+                "Given a non MH/PC type of care",
+                "And the user has available clinics",
+                "And direct and requests are enabled",
+                "And all non-clinic eligibility checks are failing",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when using primary care",
+              "parts": [
+                "Given a type of care of PC or MH",
+                "And the user has available clinics",
+                "And direct and requests are enabled",
+                "And the non-clinics eligibility checks are failing",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when requests and direct scheduling are disabled",
+              "parts": [
+                "Given any type of care",
+                "And the user has available clinics",
+                "And eligibility checks are passing",
+                "And requests and direct are disabled",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when there are errors",
+              "parts": [
+                "Given a type of care",
+                "And any other eligibility conditions",
+                "And some checks return an error",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when passing past clinic check",
+              "parts": [
+                "Given a non MH/PC type of care",
+                "And the user has an available clinic",
+                "And direct and requests are enabled",
+                "And there are past appointments matching an available clinic",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when DS is disabled by toggle",
+              "parts": [
+                "Given a type of care",
+                "And the user has an available clinic",
+                "And direct and requests are enabled",
+                "And direct eligibility checks are passing",
+                "And direct scheduling is disabled by feature toggle",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            },
+            {
+              "type": "Scenario",
+              "name": "should match when passing all checks",
+              "parts": [
+                "Given a non MH/PC type of care",
+                "And direct and requests enabled",
+                "And a user passing all eligibility checks",
+                "When we compare the eligibility check using v0 and v2",
+                "Then both results are the same"
+              ],
+              "isGWT": true
+            }
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    },
+    {
+      "type": "Feature",
+      "name": "VAOS Slot service",
+      "filePath": "./src/applications/vaos/tests/services/slot/index.v2.unit.spec.js",
+      "nodes": [
+        {
+          "type": "Background",
+          "name": "getSlots",
+          "filePath": "./src/applications/vaos/tests/services/slot/index.v2.unit.spec.js",
+          "nodes": [
+            {
+              "type": "Scenario",
+              "name": "should return matching v0 and v2 data for available slots",
+              "parts": [
+                "Given a veteran starts a VA direct schedule appointment",
+                "And the developer fetched available time slots using v2 and v0 API",
+                "When they compared the two results",
+                "Then the results have the following differences"
+              ],
+              "isGWT": true
+            }
+          ],
+          "isGWT": true
+        }
+      ],
+      "isGWT": true
+    }
+  ]
+}

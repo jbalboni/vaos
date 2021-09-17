@@ -2,22 +2,26 @@
   import { onMount } from 'svelte';
 
   let pullRequests;
+  let loading = true;
   onMount(async () => {
     const response = await fetch('pullRequests.json');
     pullRequests = await response.json();
+    loading = false;
 
     window.addEventListener('focus', async () => {
-      pullRequests = null;
+      loading = true;
       const response = await fetch('pullRequests.json');
       pullRequests = await response.json();
+      loading = false;
     });
   });
 </script>
 
 <h2>Pull requests</h2>
-{#if !pullRequests}
+{#if loading}
   <p>Loading...</p>
-{:else}
+{/if}
+{#if pullRequests}
   <ul>
     {#each pullRequests as pr}
       <li><a href={pr.url}>{pr.title}</a> ({pr.user})</li>
