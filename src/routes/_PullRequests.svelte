@@ -18,15 +18,19 @@
 </script>
 
 <h2>Pull requests</h2>
-{#if loading}
-  <p>Loading...</p>
-{/if}
 {#if pullRequests}
   <ul>
     {#each pullRequests as pr}
-      <li><a href={pr.url}>{pr.title}</a> ({pr.user})</li>
+      <li>
+        <a target="_blank" rel="nofollow noreferrer" href={pr.url}>{pr.title}</a
+        >
+        ({pr.user})
+      </li>
     {/each}
   </ul>
+{/if}
+{#if loading}
+  <p>Loading...</p>
 {/if}
 
 <style>

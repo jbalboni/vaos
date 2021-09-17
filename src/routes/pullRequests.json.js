@@ -49,7 +49,7 @@ export async function get() {
   return {
     body: relevantPRs.map((pr) => ({
       title: pr.title,
-      url: pr.url,
+      url: pr.html_url,
       user: pr.user.login
     }))
   };

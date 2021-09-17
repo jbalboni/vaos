@@ -40,6 +40,10 @@
   <div class="metric-chart">
     <PullRequests />
   </div>
+  <div class="metric-chart">
+    <h2>Specs</h2>
+    <a href="specs">View specs</a>
+  </div>
 </div>
 
 <style>
